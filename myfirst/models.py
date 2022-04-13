@@ -12,6 +12,7 @@ class Types(models.Model):
     def __str__(self):
         return self.name
 
+
 class Tank(models.Model):
     #charfield je varchar, integer field je int
     HT = 'Heavy'
@@ -45,10 +46,13 @@ class Tank(models.Model):
         ('REAR', 'REAR'),
     ]
 
+
     name = models.CharField(max_length=50, unique=True, verbose_name='Tank name', help_text='Enter Tank name')
     types = models.CharField(max_length=50, choices=TYPES, verbose_name='Type of tank')
     tank_class = models.CharField(max_length=50, choices=NATIONS, verbose_name='Choose nation')
-    deploy = models.CharField(max_length=50, choices=DEPLOYMENT, verbose_name='Choose deployment')
+    deploy = models.CharField(max_length=50, choices=DEPLOYMENT, verbose_name='Choose deployment', help_text='Where was the tank deployed')
+
+
 
     class Meta:
         ordering = ['name']
@@ -56,6 +60,11 @@ class Tank(models.Model):
     def __str__(self):
             return self.name
 
+class Patch(models.Model):
+    patch_class = models.CharField(max_length=50, unique=True, verbose_name='Patch', help_text='Verze hry')
+    patch_dor = models.DateField
 
 
+    def __str__(self):
+            return self.name
 
