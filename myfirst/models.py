@@ -61,9 +61,6 @@ class Attachment(models.Model):
     tank = models.ForeignKey(Tank, models.DO_NOTHING, blank=True, null=True, verbose_name='idk')
     name = models.CharField(max_length=200, verbose_name='Tank info', blank=True, null=True,
                             help_text='Enter tank information')
-    abbr = models.CharField(max_length=3, unique=True, validators=[MinLengthValidator(2)],
-                            verbose_name='Tank type Abbreviation',
-                            help_text='Enter Abbreviation')
     image = models.ImageField(upload_to=img_path, blank=True, null=True, verbose_name="Image")
 
     class Meta:
