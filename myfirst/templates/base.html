@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <!--Načtení adresy statických souborů webu -musí být před prvním použití identifikátoru static -->
     {% load static %}<!--Připojení vlastního CSS souboru umístěného ve struktuře složky static -->
+<!-- Blok určený k připojování dalších externích stylů -->
+ {% block css %}
+ {% endblock %}
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body><!--Záhlavístránky -->
@@ -20,7 +24,7 @@
         <ul class="navbar-nav">
             <li class="nav-item"><!--Odkaz na úvodní stránku webu --><a class="nav-link active"
                                                                         href="{% url 'index' %}">Úvodní stránka</a></li>
-            <li class="nav-item"><a class="nav-link" href="list.html">Seznam tanků</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'tanks' %}">Seznam tanků</a></li>
         </ul>
     </div>
 </nav><!--Hlavní blok stránky -->

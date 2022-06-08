@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Detail tanku{% endblock %}
+<!-- Vložení externího CSS pro knihovnu Lightbox for Bootstrap -->
+{% block css %}
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekkolightbox.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row mb-3">
+        <div class="col-sm-12 bg-warning">
+            <h2 class="display-4 text-center">Podrobné informace</h2>
+        </div>
+    </div>
+
+    <div class="row mt-5 mb-3">
+        <div class="col-lg-6 mb-3">
+            <h2 class="display-4 mb-3">{{ tank_detail.name }}</h2>
+            <div class="row">
+
+                <div class="col-md-9">
+                   {% for images in tank_detail.attachment_set.all %}
+
+                    <div class="col-lg-6 col-xl-4">
+                     <img class="card-img-top" src="{{ images.image.url }}" alt="{{ tank.name }}">
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="col-md-3 float-left">
+                    <p>Typ: {{ tank_detail.types }}</p>
+                    <p>Národ: {{ tank_detail.nations }}</p>
+                    <p>Úroveň: {{ tank_detail.tier }}</p>
+                </div>
+            {% for tank in tank_detail.attachment_set.all %}
+                        <p>{{ tank.name }}&nbsp;</p>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
